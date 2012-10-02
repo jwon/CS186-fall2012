@@ -213,3 +213,5 @@ Migrating to CreateFollowings (20121002162649)
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
   [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+SQLite3::SQLException: no such column: id.id: DELETE FROM "followings" WHERE "id"."id" = 1

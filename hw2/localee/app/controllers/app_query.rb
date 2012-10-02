@@ -29,6 +29,10 @@ class AppQuery
   # Output: None
   def get_following_locations(user_id)
     @following_locations = []
+    location_ids = Following.where("user_id = ?", user_id).select("location_id")
+    location_ids.each do |loc_id|
+      @following_locations << Location.find_by_id(loc_id)
+    end
   end
 
   # Purpose: Show the information and all posts for a given location
