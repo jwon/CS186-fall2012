@@ -215,3 +215,11 @@ Migrating to CreateFollowings (20121002162649)
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 SQLite3::SQLException: no such column: id.id: DELETE FROM "followings" WHERE "id"."id" = 1
+Connecting to database specified by database.yml
+SQLite3::SQLException: near "Locations": syntax error: SELECT * Locations
+SQLite3::SQLException: near "Location": syntax error: SELECT * Location
+SQLite3::SQLException: no such table: Location: SELECT * FROM Location
+SQLite3::SQLException: no such table: Following: SELECT * FROM Following
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
