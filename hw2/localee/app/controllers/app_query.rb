@@ -29,9 +29,9 @@ class AppQuery
   # Output: None
   def get_following_locations(user_id)
     @following_locations = []
-    location_ids = Following.where("user_id = ?", user_id).select("location_id")
-    location_ids.each do |loc_id|
-      @following_locations << Location.find_by_id(loc_id)
+    locations = Following.where("user_id = ?", user_id)
+    locations.each do |loc|
+      @following_locations << Location.find_by_id(loc.location_id).to_hash
     end
   end
 
@@ -58,7 +58,7 @@ class AppQuery
   #         * :longitude - the longitude
   # Output: None
   def get_posts_for_location(location_id)
-    @location = {}
+    @location = Location.find_by_id(location_id).to_hash
     @posts = []
   end
 

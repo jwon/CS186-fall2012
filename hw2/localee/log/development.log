@@ -223,3 +223,5 @@ SQLite3::SQLException: no such table: Following: SELECT * FROM Following
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
