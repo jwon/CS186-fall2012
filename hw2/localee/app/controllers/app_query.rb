@@ -60,6 +60,10 @@ class AppQuery
   def get_posts_for_location(location_id)
     @location = Location.find_by_id(location_id).to_hash
     @posts = []
+    results = Post.where("location_id = ?", location_id).order("created_at DESC")
+    results.each do |post|
+      @posts << post.to_hash
+    end
   end
 
   # Purpose: Show the current user's stream of posts from all the locations the user follows
