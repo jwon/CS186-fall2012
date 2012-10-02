@@ -136,6 +136,8 @@ class AppQuery
   #       we may call it multiple times to test your schema/models.
   #       Your schema/models/code should prevent corruption of the database.
   def follow_location(user_id, location_id)
+    @following = Following.new(:user_id => user_id, :location_id => location_id)
+    @following.save
   end
 
   # Purpose: The current user unfollows a location
@@ -148,6 +150,9 @@ class AppQuery
   #       we may call it multiple times to test your schema/models.
   #       Your schema/models/code should prevent corruption of the database.
   def unfollow_location(user_id, location_id)
+    # need to cover case where we try to unfollow same location twice.
+    @unfollow = Following.where("user_id = ? AND location_id = ?", user_id, location_id)
+    Following.destroy(@unfollow)
   end
 
   # Purpose: The current user creates a post to a given location
