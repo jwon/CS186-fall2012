@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
   ############################################
   #  TODO: you may optionally add code here  #
   ############################################
-  
+  has_many :posts
+
   def to_hash
     {
       :id => self.id,
