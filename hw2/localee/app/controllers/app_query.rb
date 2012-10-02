@@ -202,6 +202,10 @@ class AppQuery
   # Output: None
   def get_all_posts
     @posts = []
+    results = Post.all
+    results.each do |post|
+      @posts << post.to_hash
+    end
   end
 
   # Purpose: Get all the users
@@ -216,6 +220,10 @@ class AppQuery
   # Output: None
   def get_all_users
     @users = []
+    results = User.all
+    results.each do |user|
+      @users << user.to_hash
+    end
   end
 
   # Purpose: Get all the locations
@@ -231,6 +239,10 @@ class AppQuery
   # Output: None
   def get_all_locations
     @locations = []
+    results = Location.all
+    results.each do |loc|
+      @locations << loc.to_hash
+    end
   end
 
   # Retrieve the top 5 users who created the most posts.
