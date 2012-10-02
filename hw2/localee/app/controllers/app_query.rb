@@ -122,7 +122,8 @@ class AppQuery
   # Assign: None
   # Output: true if the creation is successful, false otherwise
   def create_location(location_hash={})
-    false
+    @location = Location.new(:name => location_hash[:name], :gps_lat => location_hash[:latitude], :gps_long => location_hash[:longitude])
+    @location.save
   end
 
   # Purpose: The current user follows a location
@@ -162,7 +163,8 @@ class AppQuery
   # Assign: None
   # Output: true if the creation is successful, false otherwise
   def create_post(user_id, post_hash={})
-    false
+    @post = Post.new(:user_id => user_id, :location_id => post_hash[:location_id], :text => post_hash[:text])
+    @post.save
   end
 
   # Purpose: Create a new user
