@@ -150,7 +150,8 @@ class AppQuery
   #       we may call it multiple times to test your schema/models.
   #       Your schema/models/code should prevent corruption of the database.
   def unfollow_location(user_id, location_id)
-    # need to cover case where we try to unfollow same location twice.
+    # need to cover case where we try to unfollow same location twice. Should be an if check for a nil return value, only
+    # delete if user_id AND location_id are in the table
     @unfollow = Following.where("user_id = ? AND location_id = ?", user_id, location_id)
     Following.destroy(@unfollow)
   end
