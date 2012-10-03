@@ -116,6 +116,19 @@ class AppQuery
   # Output: None
   def get_nearby_locations(nelat, nelng, swlat, swlng, user_id)
     @locations = []
+    locs = Location.where("gps_lat >= ? AND gps_lat <= ? AND gps_long >= ? AND gps_long <= ?", swlat, nelat, swlng, nelng).limit(50).order("gps_lat")
+    get_following_locations(user_id)
+    locs.each do |loc|
+      @following_locations.each do |f_loc|
+        result = loc.to_hash
+        if loc.id == f_loc[:id]
+          result[:follows] = true
+        else
+          result[:follows] = false
+        end
+        @locations << result
+      end
+    end
   end
 
   # Purpose: Create a new location
