@@ -305,7 +305,7 @@ class AppQuery
   #   * name - name of the user
   #   * num_locations - number of locations (has at least 2 posts) the user follows
   def top_users_locations_sql
-    "SELECT COUNT(DISTINCT F.location_id) AS num_locations, U.name AS name FROM Users U, Followings F WHERE U.id = F.user_id AND F.location_id IN (SELECT P.location_id COUNT(P.id) AS num_posts FROM Posts P GROUP BY P.location_id HAVING num_posts >= 2) ORDER BY num_locations DESC LIMIT 5"
+    "SELECT U.name AS name, COUNT(DISTINCT F.location_id) AS num_locations FROM Users U, Followings F WHERE U.id = F.user_id AND F.location_id IN (SELECT P.location_id FROM Posts P JOIN Locations L GROUP BY P.location_id HAVING COUNT(P.id) >= 2) GROUP BY F.user_id ORDER BY num_locations DESC LIMIT 5"
   end
 
 end
