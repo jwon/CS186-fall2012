@@ -93,7 +93,7 @@ class AppQuery
         result << post_hash
       end
     end
-    @posts = result
+    @posts = result.sort_by { |h| h[:created_at] }.reverse
   end
 
   # Purpose: Retrieve the locations within a GPS bounding box

@@ -644,3 +644,76 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 10:14:24 -0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (24.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 111ms (ActiveRecord: 31.1ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2012-10-03 10:14:25 -0700
+Processing by AppController#dashboard as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mFollowing Load (0.1ms)[0m  [1mSELECT "followings".* FROM "followings" WHERE (user_id = 1)[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 2 LIMIT 1
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 2 LIMIT 1
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (location_id = 2) ORDER BY created_at DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (location_id = 1) ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 1 LIMIT 1[0m
+  Rendered posts/_post.html.haml (9.0ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered home/dashboard.html.haml within layouts/application (35.8ms)
+  Rendered application/_header_user.html.haml (7.3ms)
+  Rendered application/_header.html.haml (13.9ms)
+Completed 200 OK in 139ms (Views: 80.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 10:14:25 -0700
+Served asset /application.css - 304 Not Modified (23ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 10:14:25 -0700
+Served asset /application.js - 304 Not Modified (18ms)
+
+
+Started GET "/locations" for 127.0.0.1 at 2012-10-03 10:14:34 -0700
+Processing by AppController#locations_index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mFollowing Load (0.1ms)[0m  [1mSELECT "followings".* FROM "followings" WHERE (user_id = 1)[0m
+  [1m[35mLocation Load (8.4ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 2 LIMIT 1
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 1 LIMIT 1[0m
+  Rendered locations/_location.html.haml (1.9ms)
+  Rendered locations/_location.html.haml (0.3ms)
+  Rendered locations/index.html.haml within layouts/application (312.6ms)
+  Rendered application/_header_user.html.haml (0.7ms)
+  Rendered application/_header.html.haml (3.9ms)
+Completed 200 OK in 336ms (Views: 324.9ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 10:14:35 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 10:14:35 -0700
+Served asset /application.js - 304 Not Modified (49ms)
+
+
+Started POST "/nearby_locations" for 127.0.0.1 at 2012-10-03 10:14:37 -0700
+Processing by AppController#nearby_locations_index as */*
+  Parameters: {"nelat"=>"37.889133072107185", "nelng"=>"-122.23341779345702", "swlat"=>"37.86203303546808", "swlng"=>"-122.28491620654296"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
