@@ -118,16 +118,19 @@ class AppQuery
     @locations = []
     locs = Location.where("gps_lat >= ? AND gps_lat <= ? AND gps_long >= ? AND gps_long <= ?", swlat, nelat, swlng, nelng).limit(50).order("gps_lat")
     get_following_locations(user_id)
+    following_loc_ids = []
+    @following_locations.each do |f_loc|
+      following_loc_ids << f_loc[:id]
+    end
+
     locs.each do |loc|
-      @following_locations.each do |f_loc|
-        result = loc.to_hash
-        if loc.id == f_loc[:id]
-          result[:follows] = true
-        else
-          result[:follows] = false
-        end
-        @locations << result
+      result = loc.to_hash
+      if following_loc_ids.include?(loc.id)
+        result[:follows] = true
+      else
+        result[:follows] = false
       end
+      @locations << result
     end
   end
 
