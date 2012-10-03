@@ -723,3 +723,1749 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (18.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (10.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120905195452)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "password_digest" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120905195452')
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateLocations (20121001173605)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "gps_lat" float, "gps_long" float, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121001173605')
+  [1m[36m (7.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePosts (20121001173734)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "user_id" integer, "location_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121001173734')
+  [1m[36m (7.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateFollowings (20121002162649)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "followings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "location_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121002162649')
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("followings")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("locations")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user1' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (4.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:17 UTC +00:00], ["email", "user1"], ["name", "user1"], ["password_digest", "$2a$10$pfOMx4ci9R1N4uT18LsdcOOpz9Im7pOotmvwMKqaHMNU4WOk7DI4i"], ["updated_at", Wed, 03 Oct 2012 18:33:17 UTC +00:00]]
+  [1m[35m (19.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user2' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00], ["email", "user2"], ["name", "user2"], ["password_digest", "$2a$10$y.xjDDNR3KJ5Esp/MH3rRu578OwfU02kYND7eB/uOBFw7prkNIE0W"], ["updated_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00]]
+  [1m[35m (10.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user3' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00], ["email", "user3"], ["name", "user3"], ["password_digest", "$2a$10$KX1e4ywM49UYy8ulshEKUezro6BIIiKPekRcTj6t4MJd1zK/RzMV6"], ["updated_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00]]
+  [1m[35m (8.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user4' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (6.8ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00], ["email", "user4"], ["name", "user4"], ["password_digest", "$2a$10$d0aLEXqGGxT4n4cJIYaTKeGxRm3PFTLWz2i8kjvH/SBT.RQwHJcEu"], ["updated_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00]]
+  [1m[35m (7.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user5' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00], ["email", "user5"], ["name", "user5"], ["password_digest", "$2a$10$unzf2p/YMOL27ThYja1T3.kNBF8yJZpFcpp.tgxwU8Sf2l9gTCiIi"], ["updated_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00]]
+  [1m[35m (5.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user6' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00], ["email", "user6"], ["name", "user6"], ["password_digest", "$2a$10$WtbXEy5szcvyJRtbPY3/.OgVccNJj2rR5oGCCkkpWVi5ym37mUIsy"], ["updated_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00]]
+  [1m[35m (5.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user7' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00], ["email", "user7"], ["name", "user7"], ["password_digest", "$2a$10$B22o5Ix5bvlolDNERVbgXODO7bFF99YBZIjB3xcH9uBsWOUOflCva"], ["updated_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00]]
+  [1m[35m (6.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user8' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00], ["email", "user8"], ["name", "user8"], ["password_digest", "$2a$10$7hZjnDkPqXX2EHbmyeS9q.hhsqAWzb8vw2UUd0EZkeqMxc1k2UjHW"], ["updated_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00]]
+  [1m[35m (6.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user9' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00], ["email", "user9"], ["name", "user9"], ["password_digest", "$2a$10$g.rpwCaz1SWXbmD5JbOCEexD1tFb2J2ovU2gG8XQHyre85rO8kDz."], ["updated_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00]]
+  [1m[35m (13.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user10' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00], ["email", "user10"], ["name", "user10"], ["password_digest", "$2a$10$eywjacEozG2xn165MK7u1eKM6ZdeDS2nLFZuhwP0wi4vYHuIYXo1a"], ["updated_at", Wed, 03 Oct 2012 18:33:18 UTC +00:00]]
+  [1m[35m (19.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user11' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["email", "user11"], ["name", "user11"], ["password_digest", "$2a$10$4byEQVJzPToXYObA/GTlV.pI5MsRyBbbDFaxko2Yrcx8QNINeKwCa"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (14.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user12' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["email", "user12"], ["name", "user12"], ["password_digest", "$2a$10$JSS3iXbvzBu6dLxUrSdoWuR2xAfzINmjUvZQh4faQX25aSxice6tu"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (5.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user13' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["email", "user13"], ["name", "user13"], ["password_digest", "$2a$10$ng3GrTwPCWRUgQns3WfwHO2.HdVE07qt.hWOpGSXdu17LZnDuaOZ2"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (12.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user14' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["email", "user14"], ["name", "user14"], ["password_digest", "$2a$10$5n8mKCSJuAwe8p82AzgWLOhzLchMcwoOKyp1TYAqlxeSPDMMuA5R."], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (9.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user15' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["email", "user15"], ["name", "user15"], ["password_digest", "$2a$10$WlAr21.D1onI619a.MmS1u.YutCFYu4UUNyq1gDfM/f0sr9SSTN9m"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (7.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.88657076102444], ["gps_long", -122.27469814430366], ["name", "location1"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[36m (6.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.861117564282765], ["gps_long", -122.24738591620925], ["name", "location2"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (10.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.88781734519708], ["gps_long", -122.26059096512084], ["name", "location3"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.90197949966342], ["gps_long", -122.23363429810412], ["name", "location4"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (6.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.874888678931946], ["gps_long", -122.26378272778608], ["name", "location5"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.86742244308489], ["gps_long", -122.22907978166438], ["name", "location6"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.87259279314013], ["gps_long", -122.29802295370307], ["name", "location7"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.87039618339547], ["gps_long", -122.22815840312664], ["name", "location8"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (6.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.85871327525634], ["gps_long", -122.286098613617], ["name", "location9"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.87763224524341], ["gps_long", -122.24939303410484], ["name", "location10"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (6.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.883206674264805], ["gps_long", -122.21668080880697], ["name", "location11"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.888087604746694], ["gps_long", -122.24123610533029], ["name", "location12"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.88797855783586], ["gps_long", -122.27090584453568], ["name", "location13"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.86843113640212], ["gps_long", -122.2806591993342], ["name", "location14"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[35m (3.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "locations" ("created_at", "gps_lat", "gps_long", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["gps_lat", 37.86474150480659], ["gps_long", -122.23918104949922], ["name", "location15"], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" [0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 1 AND "followings"."location_id" = 11) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 11], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 1]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 1 AND "followings"."location_id" = 5) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 5], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 1]]
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 2 AND "followings"."location_id" = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 4], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 2]]
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 2 AND "followings"."location_id" = 9) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 9], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 2]]
+  [1m[36m (52.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 2 AND "followings"."location_id" = 12) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 12], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 2]]
+  [1m[36m (16.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 2 AND "followings"."location_id" = 7) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 7], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 2]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 2 AND "followings"."location_id" = 15) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 15], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 2]]
+  [1m[36m (8.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 4 AND "followings"."location_id" = 11) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 11], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 4]]
+  [1m[36m (10.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 4 AND "followings"."location_id" = 7) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 7], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 4]]
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 4 AND "followings"."location_id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 6], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 4]]
+  [1m[36m (10.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 5 AND "followings"."location_id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 6], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 5]]
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 5 AND "followings"."location_id" = 12) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 12], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 5]]
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 6 AND "followings"."location_id" = 7) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 7], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 6]]
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 6 AND "followings"."location_id" = 1) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 1], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 6]]
+  [1m[36m (23.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 7 AND "followings"."location_id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 6], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 7]]
+  [1m[36m (38.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 7 AND "followings"."location_id" = 12) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 12], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 7]]
+  [1m[36m (12.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 8 AND "followings"."location_id" = 3) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 3], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 8]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 8 AND "followings"."location_id" = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 4], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 8]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 8 AND "followings"."location_id" = 9) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 9], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 8]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 8 AND "followings"."location_id" = 10) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 10], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 8]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 8 AND "followings"."location_id" = 11) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 11], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 8]]
+  [1m[36m (3.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 8 AND "followings"."location_id" = 14) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 14], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 8]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 9 AND "followings"."location_id" = 11) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 11], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 9]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 9 AND "followings"."location_id" = 9) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 9], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 9]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 9 AND "followings"."location_id" = 12) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 12], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 9]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 9 AND "followings"."location_id" = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 4], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 9]]
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 9 AND "followings"."location_id" = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 5], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 9]]
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 10 AND "followings"."location_id" = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["location_id", 4], ["updated_at", Wed, 03 Oct 2012 18:33:19 UTC +00:00], ["user_id", 10]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 10 AND "followings"."location_id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 10]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 11 AND "followings"."location_id" = 10) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 10], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 11]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 11 AND "followings"."location_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 2], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 11]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 11 AND "followings"."location_id" = 7) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 7], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 11]]
+  [1m[36m (17.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 11 AND "followings"."location_id" = 8) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 8], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 11]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 12 AND "followings"."location_id" = 8) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 8], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 12]]
+  [1m[36m (18.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 12 AND "followings"."location_id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 12]]
+  [1m[36m (57.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 12 AND "followings"."location_id" = 5) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 5], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 12]]
+  [1m[36m (19.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 13 AND "followings"."location_id" = 7) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 7], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 13]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 13 AND "followings"."location_id" = 14) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 14], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 13]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 13 AND "followings"."location_id" = 15) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 15], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 13]]
+  [1m[36m (11.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 14 AND "followings"."location_id" = 8) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 8], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 14]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.0ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 14 AND "followings"."location_id" = 10) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 10], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 14]]
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 14 AND "followings"."location_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 2], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 14]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 14 AND "followings"."location_id" = 5) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 5], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 14]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 14 AND "followings"."location_id" = 7) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 7], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 14]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 15 AND "followings"."location_id" = 13) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 13], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 15]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 15 AND "followings"."location_id" = 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 4], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 15]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 15 AND "followings"."location_id" = 8) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 8], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 15]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFollowing Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "followings" WHERE ("followings"."user_id" = 15 AND "followings"."location_id" = 15) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "followings" ("created_at", "location_id", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 15], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 15]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 8], ["text", "post1"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (14.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 10], ["text", "post2"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 2], ["text", "post3"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 13], ["text", "post4"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 10], ["text", "post5"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post6"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post7"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 5], ["text", "post8"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 7], ["text", "post9"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (3.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 11], ["text", "post10"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 14], ["text", "post11"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (4.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 8], ["text", "post12"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (6.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 11], ["text", "post13"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post14"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 10], ["text", "post15"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (7.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 11], ["text", "post16"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 13], ["text", "post17"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 2], ["text", "post18"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 12], ["text", "post19"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 4], ["text", "post20"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 1]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 3], ["text", "post21"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 2]]
+  [1m[35m (3.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post22"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 2]]
+  [1m[36m (19.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 2], ["text", "post23"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 2]]
+  [1m[35m (6.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 14], ["text", "post24"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 2]]
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 10], ["text", "post25"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 2]]
+  [1m[35m (6.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 11], ["text", "post26"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 2]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 1], ["text", "post27"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[35m (7.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post28"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post29"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 3], ["text", "post30"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[36m (75.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 3], ["text", "post31"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[35m (16.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 11], ["text", "post32"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[36m (15.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 5], ["text", "post33"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[35m (9.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 11], ["text", "post34"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post35"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[35m (55.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post36"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[36m (18.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 14], ["text", "post37"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[35m (17.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 13], ["text", "post38"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[36m (43.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post39"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 3]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 1], ["text", "post40"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (10.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 5], ["text", "post41"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post42"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 11], ["text", "post43"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 15], ["text", "post44"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post45"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[35m (5.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 12], ["text", "post46"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post47"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 11], ["text", "post48"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 3], ["text", "post49"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[35m (12.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post50"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 4], ["text", "post51"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post52"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 8], ["text", "post53"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[35m (7.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 10], ["text", "post54"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 2], ["text", "post55"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 2], ["text", "post56"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 5], ["text", "post57"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[35m (3.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 10], ["text", "post58"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 4]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 13], ["text", "post59"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[35m (13.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post60"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 13], ["text", "post61"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post62"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 5], ["text", "post63"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[35m (7.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post64"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[36m (11.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 3], ["text", "post65"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 13], ["text", "post66"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[36m (18.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 6], ["text", "post67"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post68"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[36m (13.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 9], ["text", "post69"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[35m (36.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["location_id", 8], ["text", "post70"], ["updated_at", Wed, 03 Oct 2012 18:33:20 UTC +00:00], ["user_id", 5]]
+  [1m[36m (30.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 1], ["text", "post71"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[35m (28.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 15], ["text", "post72"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[36m (36.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 14], ["text", "post73"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[35m (10.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 4], ["text", "post74"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[36m (11.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 5], ["text", "post75"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[35m (7.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 8], ["text", "post76"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 14], ["text", "post77"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[35m (19.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 15], ["text", "post78"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 4], ["text", "post79"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[35m (31.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post80"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 13], ["text", "post81"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 6], ["text", "post82"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 11], ["text", "post83"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[35m (6.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 3], ["text", "post84"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 5]]
+  [1m[36m (11.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 10], ["text", "post85"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 13], ["text", "post86"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[36m (35.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 15], ["text", "post87"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[35m (10.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post88"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[36m (19.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 7], ["text", "post89"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[35m (16.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 4], ["text", "post90"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[36m (14.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 7], ["text", "post91"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[35m (8.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post92"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post93"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 5], ["text", "post94"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[36m (10.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 14], ["text", "post95"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[35m (8.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post96"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 7], ["text", "post97"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[35m (6.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post98"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post99"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 1], ["text", "post100"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 6]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 11], ["text", "post101"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 7]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 13], ["text", "post102"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 7]]
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 3], ["text", "post103"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 7]]
+  [1m[35m (6.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post104"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 7]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 5], ["text", "post105"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 7]]
+  [1m[35m (11.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 5], ["text", "post106"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 7]]
+  [1m[36m (18.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 10], ["text", "post107"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post108"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 10], ["text", "post109"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 14], ["text", "post110"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 11], ["text", "post111"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 7], ["text", "post112"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 7], ["text", "post113"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[35m (11.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post114"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post115"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[35m (7.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post116"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[36m (14.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post117"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[35m (10.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 13], ["text", "post118"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 6], ["text", "post119"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[35m (40.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 14], ["text", "post120"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 8]]
+  [1m[36m (10.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post121"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (9.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post122"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post123"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post124"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 13], ["text", "post125"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 13], ["text", "post126"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 14], ["text", "post127"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (6.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post128"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post129"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (12.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 3], ["text", "post130"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 6], ["text", "post131"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (8.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 7], ["text", "post132"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post133"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post134"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 4], ["text", "post135"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (4.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 13], ["text", "post136"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 8], ["text", "post137"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (9.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 13], ["text", "post138"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (7.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 1], ["text", "post139"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[35m (7.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post140"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 9]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 14], ["text", "post141"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 10]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post142"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 10]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 4], ["text", "post143"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 10]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 11], ["text", "post144"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 10]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 6], ["text", "post145"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 10]]
+  [1m[35m (7.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 11], ["text", "post146"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 10]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 1], ["text", "post147"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 10]]
+  [1m[35m (8.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 10], ["text", "post148"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[36m (6.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 1], ["text", "post149"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post150"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 8], ["text", "post151"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post152"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post153"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post154"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 10], ["text", "post155"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[35m (5.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 15], ["text", "post156"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post157"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 9], ["text", "post158"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 11]]
+  [1m[36m (11.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 2], ["text", "post159"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[35m (7.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 11], ["text", "post160"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 10], ["text", "post161"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 1], ["text", "post162"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post163"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 8], ["text", "post164"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 7], ["text", "post165"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[35m (13.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 12], ["text", "post166"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 7], ["text", "post167"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[35m (16.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["location_id", 8], ["text", "post168"], ["updated_at", Wed, 03 Oct 2012 18:33:21 UTC +00:00], ["user_id", 12]]
+  [1m[36m (17.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 3], ["text", "post169"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[35m (10.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 5], ["text", "post170"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 13], ["text", "post171"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[35m (5.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 3], ["text", "post172"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[36m (7.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 7], ["text", "post173"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[35m (7.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 15], ["text", "post174"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 4], ["text", "post175"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 14], ["text", "post176"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 14], ["text", "post177"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 2], ["text", "post178"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 7], ["text", "post179"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 8], ["text", "post180"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 12]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 5], ["text", "post181"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 13]]
+  [1m[35m (7.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 1], ["text", "post182"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 13]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 4], ["text", "post183"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 13]]
+  [1m[35m (7.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 2], ["text", "post184"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 13]]
+  [1m[36m (8.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 4], ["text", "post185"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 13]]
+  [1m[35m (5.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 13], ["text", "post186"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 13]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 14], ["text", "post187"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 13]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 1], ["text", "post188"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 14]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 5], ["text", "post189"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 15], ["text", "post190"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 9], ["text", "post191"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[35m (14.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 10], ["text", "post192"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[36m (32.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 1], ["text", "post193"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[35m (11.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 8], ["text", "post194"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 15], ["text", "post195"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 6], ["text", "post196"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 2], ["text", "post197"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 7], ["text", "post198"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "posts" ("created_at", "location_id", "text", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["location_id", 15], ["text", "post199"], ["updated_at", Wed, 03 Oct 2012 18:33:22 UTC +00:00], ["user_id", 15]]
+  [1m[35m (12.6ms)[0m  commit transaction
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 11:34:03 -0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (10.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 148ms (ActiveRecord: 49.0ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2012-10-03 11:34:03 -0700
+Processing by AppController#dashboard as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mFollowing Load (0.0ms)[0m  [1mSELECT "followings".* FROM "followings" WHERE (user_id = 1)[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (location_id = 11) ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (location_id = 5) ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 15 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  Rendered posts/_post.html.haml (2.5ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (4.1ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.0ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.5ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (3.6ms)
+  Rendered home/dashboard.html.haml within layouts/application (59.7ms)
+  Rendered application/_header_user.html.haml (5.8ms)
+  Rendered application/_header.html.haml (7.2ms)
+Completed 200 OK in 181ms (Views: 101.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 11:34:03 -0700
+Served asset /application.css - 304 Not Modified (25ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 11:34:03 -0700
+Served asset /application.js - 304 Not Modified (18ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 11:34:04 -0700
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2012-10-03 11:34:04 -0700
+Processing by AppController#dashboard as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mFollowing Load (0.1ms)[0m  SELECT "followings".* FROM "followings" WHERE (user_id = 1)
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE (location_id = 11) ORDER BY created_at DESC
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE (location_id = 5) ORDER BY created_at DESC
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 15 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  Rendered posts/_post.html.haml (0.5ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.6ms)
+  Rendered posts/_post.html.haml (0.5ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.7ms)
+  Rendered posts/_post.html.haml (0.5ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.0ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.2ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.0ms)
+  Rendered posts/_post.html.haml (0.5ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered home/dashboard.html.haml within layouts/application (66.8ms)
+  Rendered application/_header_user.html.haml (0.8ms)
+  Rendered application/_header.html.haml (1.4ms)
+Completed 200 OK in 116ms (Views: 71.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 11:34:04 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 11:34:04 -0700
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/locations" for 127.0.0.1 at 2012-10-03 11:34:14 -0700
+Processing by AppController#locations_index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mFollowing Load (0.1ms)[0m  SELECT "followings".* FROM "followings" WHERE (user_id = 1)
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  Rendered locations/_location.html.haml (5.1ms)
+  Rendered locations/_location.html.haml (0.3ms)
+  Rendered locations/index.html.haml within layouts/application (297.2ms)
+  Rendered application/_header_user.html.haml (1.2ms)
+  Rendered application/_header.html.haml (2.2ms)
+Completed 200 OK in 308ms (Views: 306.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 11:34:14 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 11:34:14 -0700
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started POST "/nearby_locations" for 127.0.0.1 at 2012-10-03 11:34:15 -0700
+Processing by AppController#nearby_locations_index as */*
+  Parameters: {"nelat"=>"37.889133072107185", "nelng"=>"-122.23341779345702", "swlat"=>"37.86203303546808", "swlng"=>"-122.28491620654296"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mFollowing Load (0.2ms)[0m  SELECT "followings".* FROM "followings" WHERE (user_id = 1)
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mLocation Load (0.3ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE (gps_lat >= '37.86203303546808' AND gps_lat <= '37.889133072107185' AND gps_long >= '-122.28491620654296' AND gps_long <= '-122.23341779345702') ORDER BY gps_lat LIMIT 50[0m
+Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/nearby_locations" for 127.0.0.1 at 2012-10-03 11:34:25 -0700
+Processing by AppController#nearby_locations_index as */*
+  Parameters: {"nelat"=>"37.90267935149057", "nelng"=>"-122.20766858691405", "swlat"=>"37.84847927881111", "swlng"=>"-122.31066541308593"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mFollowing Load (0.0ms)[0m  [1mSELECT "followings".* FROM "followings" WHERE (user_id = 1)[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mLocation Load (0.2ms)[0m  SELECT "locations".* FROM "locations" WHERE (gps_lat >= '37.84847927881111' AND gps_lat <= '37.90267935149057' AND gps_long >= '-122.31066541308593' AND gps_long <= '-122.20766858691405') ORDER BY gps_lat LIMIT 50
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 11:34:41 -0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 5ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2012-10-03 11:34:41 -0700
+Processing by AppController#dashboard as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mFollowing Load (0.1ms)[0m  [1mSELECT "followings".* FROM "followings" WHERE (user_id = 1)[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (location_id = 11) ORDER BY created_at DESC[0m
+  [1m[35mUser Load (7.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (3.2ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (location_id = 5) ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 15 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.5ms)
+  Rendered posts/_post.html.haml (0.5ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.2ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.5ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (1.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.7ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (7.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered home/dashboard.html.haml within layouts/application (48.7ms)
+  Rendered application/_header_user.html.haml (3.5ms)
+  Rendered application/_header.html.haml (4.7ms)
+Completed 200 OK in 124ms (Views: 59.6ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 11:34:41 -0700
+Served asset /application.css - 304 Not Modified (26ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 11:34:41 -0700
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started GET "/location/5" for 127.0.0.1 at 2012-10-03 11:34:53 -0700
+Processing by AppController#location_show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (location_id = '5') ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 15 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  Rendered posts/_post.html.haml (1.8ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.7ms)
+  Rendered posts/_post.html.haml (0.6ms)
+  Rendered posts/_post.html.haml (0.2ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.2ms)
+  Rendered locations/show.html.haml within layouts/application (58.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered application/_header_user.html.haml (0.8ms)
+  Rendered application/_header.html.haml (2.0ms)
+Completed 200 OK in 90ms (Views: 62.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 11:34:54 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 11:34:54 -0700
+Served asset /application.js - 304 Not Modified (1ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 11:43:11 -0700
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2012-10-03 11:43:11 -0700
+Processing by AppController#dashboard as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mFollowing Load (0.1ms)[0m  [1mSELECT "followings".* FROM "followings" WHERE (user_id = 1)[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (location_id = 11) ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (location_id = 5) ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 15 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (3.6ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  Rendered posts/_post.html.haml (0.5ms)
+  Rendered posts/_post.html.haml (0.8ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.7ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.6ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered home/dashboard.html.haml within layouts/application (35.8ms)
+  Rendered application/_header_user.html.haml (2.8ms)
+  Rendered application/_header.html.haml (3.4ms)
+Completed 200 OK in 101ms (Views: 41.7ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 11:43:12 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 11:43:12 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/reports" for 127.0.0.1 at 2012-10-03 11:43:16 -0700
+Processing by AppController#reports_index as HTML
+  [1m[35m (0.1ms)[0m  SELECT '' AS name, 0 AS num_posts FROM users WHERE 1=2
+  [1m[36m (0.0ms)[0m  [1mSELECT '' AS name, 0 AS num_users FROM users WHERE 1=2[0m
+  [1m[35m (0.0ms)[0m  SELECT '' AS name, 0 AS num_locations FROM users WHERE 1=2
+  Rendered reports/index.html.haml within layouts/application (21.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered application/_header_user.html.haml (3.9ms)
+  Rendered application/_header.html.haml (5.1ms)
+Completed 200 OK in 41ms (Views: 40.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 11:43:16 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 11:43:16 -0700
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 11:43:20 -0700
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2012-10-03 11:43:20 -0700
+Processing by AppController#dashboard as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mFollowing Load (4.8ms)[0m  SELECT "followings".* FROM "followings" WHERE (user_id = 1)
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE (location_id = 11) ORDER BY created_at DESC
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE (location_id = 5) ORDER BY created_at DESC
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 15 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (9.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (1.6ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered home/dashboard.html.haml within layouts/application (49.2ms)
+  Rendered application/_header_user.html.haml (0.8ms)
+  Rendered application/_header.html.haml (4.9ms)
+Completed 200 OK in 181ms (Views: 57.6ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 11:43:20 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 11:43:20 -0700
+Served asset /application.js - 304 Not Modified (1ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2012-10-03 12:01:36 -0700
+Processing by AppController#dashboard as HTML
+  [1m[36mUser Load (7.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mFollowing Load (0.1ms)[0m  SELECT "followings".* FROM "followings" WHERE (user_id = 1)
+  [1m[36mLocation Load (0.1ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mLocation Load (0.1ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE (location_id = 11) ORDER BY created_at DESC
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 10 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 11 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE (location_id = 5) ORDER BY created_at DESC
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 15 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "locations".* FROM "locations" WHERE "locations"."id" = 5 LIMIT 1
+  Rendered posts/_post.html.haml (7.8ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.2ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (8.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (2.8ms)
+  Rendered posts/_post.html.haml (0.1ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.4ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.7ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered posts/_post.html.haml (0.3ms)
+  Rendered home/dashboard.html.haml within layouts/application (62.7ms)
+  Rendered application/_header_user.html.haml (8.2ms)
+  Rendered application/_header.html.haml (12.2ms)
+Completed 200 OK in 327ms (Views: 135.6ms | ActiveRecord: 30.2ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2012-10-03 12:01:37 -0700
+Served asset /application.css - 304 Not Modified (23ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2012-10-03 12:01:37 -0700
+Served asset /application.js - 304 Not Modified (23ms)
+
+
+Started GET "/reports" for 127.0.0.1 at 2012-10-03 12:01:39 -0700
+Processing by AppController#reports_index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT U.name AS name, COUNT(P.id) AS num_posts FROM users U, Posts P WHERE U.id = P.user_id ORDER BY num_posts DESC LIMIT 5 EXCEPT WHERE num_posts = 0[0m
+SQLite3::SQLException: near "WHERE": syntax error: SELECT U.name AS name, COUNT(P.id) AS num_posts FROM users U, Posts P WHERE U.id = P.user_id ORDER BY num_posts DESC LIMIT 5 EXCEPT WHERE num_posts = 0
+Completed 500 Internal Server Error in 6ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: near "WHERE": syntax error: SELECT U.name AS name, COUNT(P.id) AS num_posts FROM users U, Posts P WHERE U.id = P.user_id ORDER BY num_posts DESC LIMIT 5 EXCEPT WHERE num_posts = 0):
+  app/controllers/app_controller.rb:54:in `reports_index'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.9ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.9ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/reports" for 127.0.0.1 at 2012-10-03 12:12:47 -0700
+Processing by AppController#reports_index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT U.name AS name, COUNT(P.id) AS num_posts FROM Users U, Posts P WHERE U.id = P.user_id ORDER BY num_posts DESC LIMIT 5 EXCEPT WHERE num_posts = 0[0m
+SQLite3::SQLException: near "WHERE": syntax error: SELECT U.name AS name, COUNT(P.id) AS num_posts FROM Users U, Posts P WHERE U.id = P.user_id ORDER BY num_posts DESC LIMIT 5 EXCEPT WHERE num_posts = 0
+Completed 500 Internal Server Error in 3ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: near "WHERE": syntax error: SELECT U.name AS name, COUNT(P.id) AS num_posts FROM Users U, Posts P WHERE U.id = P.user_id ORDER BY num_posts DESC LIMIT 5 EXCEPT WHERE num_posts = 0):
+  app/controllers/app_controller.rb:54:in `reports_index'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.8ms)

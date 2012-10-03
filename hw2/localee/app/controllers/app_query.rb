@@ -285,7 +285,7 @@ class AppQuery
   #   * name - name of the user
   #   * num_posts - number of posts the user has created
   def top_users_posts_sql
-    "SELECT '' AS name, 0 AS num_posts FROM users WHERE 1=2"
+    "SELECT U.name AS name, COUNT(P.id) AS num_posts FROM Users U, Posts P WHERE U.id = P.user_id ORDER BY num_posts DESC LIMIT 5 EXCEPT WHERE num_posts = 0"
   end
 
   # Retrieve the top 5 locations with the most unique posters. Only retrieve locations with at least 2 unique posters.
@@ -295,7 +295,7 @@ class AppQuery
   #   * name - name of the location
   #   * num_users - number of unique users who have posted to the location
   def top_locations_unique_users_sql
-    "SELECT '' AS name, 0 AS num_users FROM users WHERE 1=2"
+    "SELECT P.location_id FROM Locations L, Posts P WHERE COUNT(DISTINCT P.user_id,) AS num_users, L.name AS name GROUP BY P.location_id HAVING num_users >= 2 ORDER BY num_users DESC LIMIT 5"
   end
 
   # Retrieve the top 5 users who follow the most locations, where each location has at least 2 posts
