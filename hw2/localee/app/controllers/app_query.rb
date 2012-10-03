@@ -85,6 +85,15 @@ class AppQuery
   # Output: None
   def get_stream_for_user(user_id)
     @posts = []
+    result = []
+    get_following_locations(user_id)
+    @following_locations.each do |loc_hash|
+      get_posts_for_location(loc_hash[:id])
+      @posts.each do |post_hash|
+        result << post_hash
+      end
+    end
+    @posts = result
   end
 
   # Purpose: Retrieve the locations within a GPS bounding box
