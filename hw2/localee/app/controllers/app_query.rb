@@ -285,7 +285,7 @@ class AppQuery
   #   * name - name of the user
   #   * num_posts - number of posts the user has created
   def top_users_posts_sql
-    " "
+    "SELECT U.name AS name, COUNT(P.id) AS num_posts FROM Users U, Posts P WHERE U.id = P.user_id GROUP BY U.id, name ORDER BY num_posts DESC LIMIT 5"
   end
 
   # Retrieve the top 5 locations with the most unique posters. Only retrieve locations with at least 2 unique posters.
