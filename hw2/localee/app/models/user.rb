@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
   ############################################
   #  TODO: you may optionally add code here  #
   ############################################
-  has_many :posts
+  has_many :posts, :dependent => :destroy
+  has_many :followings, :dependent => :destroy
 
   def to_hash
     {

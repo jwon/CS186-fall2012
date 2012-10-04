@@ -6,6 +6,7 @@ class Following < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => [:location_id]
 
   # has_and_belongs_to_many :users
-  # has_and_belongs_to_many :locations
+  belongs_to :locations
+  belongs_to :users
   
 end

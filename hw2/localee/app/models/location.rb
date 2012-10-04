@@ -6,6 +6,7 @@ class Location < ActiveRecord::Base
   validates :gps_long, :presence => true
 
   has_many :posts
+  has_many :followings, :dependent => :destroy
 
   def to_hash
     {
